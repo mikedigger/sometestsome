@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+// @import 'vendors/particles';
+@import 'abstracts/helpers';
+// @import 'vendors/swiper';
+@import '~slick-carousel/slick/slick';
+@import 'base/normalize';
+@import 'base/reset';
+@import 'base/container';
+@import 'base/font-face';
+@import 'base/typography';
+// @import 'components/forms';
+@import 'components/popup';
+@import 'components/burger';
+
+@import 'layout/slider';

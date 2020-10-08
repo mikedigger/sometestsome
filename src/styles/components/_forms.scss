@@ -1,0 +1,23 @@
+.button {
+    @extend %flex-center;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    background: $accent-color;
+    color: $white;
+    line-height: 0.85;
+    text-transform: uppercase;
+    transition: all $animation-speed;
+    &:hover {
+        border-color: $accent-color;
+        background: $white;
+        color: $accent-color;
+    }
+    &--standart {
+        height: scale_size(50, 60);
+        @include screen('mobile') {
+            min-width: 180px;
+            max-width: fit-content;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+$colors: (
+    purple: #241379,
+    orange: $accent-color,
+    pink: #ff76b5,
+    blu: #4397ff,
+);
+
+// %particles-container {
+//     position: relative;
+//     //isolation: isolate;
+//     overflow: hidden;
+//     width: 100vw;
+//     height: 100vh;
+//     background: radial-gradient(circle, #24246e, #06051f);
+
+//     &:active {
+//         div,
+//         div::before,
+//         div::after {
+//             // Commented out for performance
+//             //mix-blend-mode: color-dodge;
+//             padding: 40px;
+//         }
+//     }
+// }
+
+%particles {
+    &,
+    &::before,
+    &::after {
+        content: '';
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        padding: scale_size(5, 20);
+        opacity: 0.9;
+        // transition: all 5s linear 0s;
+        transform-origin: top;
+    }
+}
+
+@function random-num($min, $max) {
+    @return floor(random() * ($max - $min) + $min);
+}
+
+@function random-calc($number) {
+    $max: 100 - $number;
+    $min: $number * -1;
+    @return random-num($min, $max);
+}
+
+@each $color-name, $color-hex in $colors {
+    // Initial top and left positions
+    $random1: random(50);
+    $random2: random(100);
+
+    // Animated top and left positions
+    $random3: random(150);
+    $random4: random(200);
+
+    // Animated top and left end positions
+    $random5: random(250);
+    $random6: random(300);
+
+    .#{'hero__particle--' + $color-name} {
+        $size: random-num(5, 50) + px;
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        background: radial-gradient(circle, #{$color-hex} 35%, transparent 70%);
+        // background: #{$color-hex};
+        transform: translate3d($random1 + vw, $random2 + vh, 0);
+        animation: #{$color-name} linear 100s alternate infinite;
+    }
+
+    .#{'hero__particle--' + $color-name}::before {
+        width: random-num(5, 50) + px;
+        height: random-num(5, 50) + px;
+        border: 2px solid #{$color-hex};
+        background: #{$color-hex};
+        transform: translate3d(random-calc($random1) + vw, random-calc($random2) + vh, 0) rotate((random(360)) + deg);
+        animation: #{$color-name}-pseudo linear 100s alternate infinite;
+    }
+
+    .#{'hero__particle--' + $color-name}::after {
+        width: random-num(5, 50) + px;
+        height: random-num(5, 50) + px;
+        border: 2px solid #{$color-hex};
+        transform: translate3d(random-calc($random1) + vw, random-calc($random2) + vh, 0) rotate((random(360)) + deg);
+        animation: #{$color-name}-pseudo linear 75s alternate infinite;
+    }
+
+    @keyframes #{$color-name} {
+        50% {
+            transform: translate3d($random3 + vw, $random4 + vh, 0);
+        }
+        100% {
+            transform: translate3d($random5 + vw, $random6 + vh, 0);
+        }
+    }
+
+    @keyframes #{$color-name}-pseudo {
+        33% {
+            transform: translate3d(random-calc($random3) + vw, random-calc($random4) + vh, 0) rotate((random(360)) + deg);
+        }
+        100% {
+            transform: translate3d(random-calc($random5) + vw, random-calc($random6) + vh, 0) rotate((random(360)) + deg);
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.burger {
+    z-index: 10;
+    position: relative;
+    width: 30px;
+    height: 16px;
+    border-width: 2px 0;
+    border-style: solid;
+    border-color: $text-color;
+    cursor: pointer;
+    transition: all $animation-speed cubic-bezier(0.67, -0.03, 0.45, 1);
+    @include screen('tablet') {
+        display: none;
+    }
+    &.active {
+        margin-top: -5px;
+        margin-bottom: -5px;
+        border-width: 0;
+        transform: rotate(90deg);
+
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    &:before,
+    &:after {
+        @extend %center-y;
+        content: '';
+        left: 0;
+        width: inherit;
+        height: 2px;
+        background: $text-color;
+        transition: all 0.35s cubic-bezier(0.8, -0.03, 0.45, 1) 0s;
+    }
+}

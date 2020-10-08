@@ -1,0 +1,36 @@
+// Colors
+$white: #fff;
+// $accent-color: #ff7214;
+$text-color: #000;
+// $heading-color: #112e41;
+
+$base-font: 'Scada', 'Proxima-Nova', 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+$secondary-font: 'Spectral','Times New Roman', Times, Georgia, serif;
+
+// Body
+$base-text-color: $text-color !default;
+$base-background-color: $white !default;
+$font-size-base: 16px;
+$line-height-base: 1.2;
+$base-font-family: $base-font;
+$base-min-width: 320px;
+
+// Liks
+// $base-link-color: $text-color;
+// $base-hover-link-color: $accent-color;
+
+// Buttons 
+// $btn-color: $white !default;
+// $btn-background: $accent-color !default;
+// $btn-font-size: inherit !default;
+
+// Headers
+// $h1-font-size: 32;
+$h2-font-size: 32;
+// $h3-font-size: 30px;
+// $h4-font-size: 22px;
+
+$headings-font-family: $secondary-font !default;
+$headings-color: $text-color !default;
+
+$animation-speed: 0.3s;
